@@ -46,7 +46,7 @@ public class DynaboDbController {
     }
 
     @PostMapping(value = "/async/employees", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Mono<Employee> addEmployee(@RequestBody Employee employee) {
+    public Mono<Employee> addEmployee(@RequestBody Employee employee) throws Exception {
         return asyncService.addEmployee(employee);
     }
 

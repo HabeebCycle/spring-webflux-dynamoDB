@@ -26,7 +26,7 @@ public class DynamoDbService {
                 .attributeType(ScalarAttributeType.S).build())
             .keySchema(key -> key
                 .attributeName(keyName)
-                .keyType(KeyType.HASH).build())
+                .keyType(KeyType.HASH).build())//.keySchema(key -> key.attributeName("sortKey").keyType(KeyType.RANGE).build())
             .provisionedThroughput(provision -> provision
                 .readCapacityUnits(10L)
                 .writeCapacityUnits(10L).build())

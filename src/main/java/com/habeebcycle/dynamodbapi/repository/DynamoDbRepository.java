@@ -21,7 +21,16 @@ public class DynamoDbRepository {
         //employeeTable.createTable(x -> x.provisionedThroughput(ProvisionedThroughput.builder().writeCapacityUnits(10L).readCapacityUnits(10L).build()));
     }
 
+    public boolean createTable() {
+        employeeTable.createTable(x -> x.provisionedThroughput(
+                ProvisionedThroughput.builder()
+                        .writeCapacityUnits(10L)
+                        .readCapacityUnits(10L).build()));
+        return true;
+    }
+
     public Employee addEmployee(Employee employee) {
+        createTable();
         employeeTable.putItem(employee);
         return employee;
     }
